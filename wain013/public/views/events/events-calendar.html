@@ -1,0 +1,247 @@
+<div ng-controller="CalendarCtrl">
+    <!-- START CALENDAR -->
+    <div pg-calendar class="full-height"></div>
+    <div ng-photoswipe slides="slides" open="open" slide-selector=".slide-list > li > img"
+         on-close="closeGallery()" options="opts"></div>
+    <!-- END CALENDAR -->
+    <!-- START Calendar Events Form -->
+    <style>
+        a.btn.btn-default {
+            width: 50px;
+        }
+    </style>
+    <div class="quickview-wrapper calendar-event" id="calendar-event">
+        <div class="view-port clearfix" id="eventFormController">
+            <div class="view bg-white">
+                <div class="scrollable">
+                    <div class="p-l-30 p-r-30 p-t-20">
+                        <a class="pg-close text-master link pull-right" data-toggle="quickview"
+                           data-toggle-element="#calendar-event" href="#"></a>
+                        <h4 id="event-date">&amp;</h4>
+                        <div class="m-b-20"><i class="fa fa-clock-o"></i> <span id="lblfromTime"></span> to <span
+                                id="lbltoTime"></span></div>
+                    </div>
+                    <div class="p-t-15">
+                        <input id="eventIndex" name="eventIndex" type="hidden">
+                        <div class="form-group-attached">
+                            <div class="form-group form-group-default ">
+                                <label>Title</label>
+                                <input type="text" class="form-control" id="txtEventName" name=""
+                                       placeholder="event name">
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-sm-9">
+                                    <div class="form-group form-group-default">
+                                        <label>Location</label>
+                                        <input type="text" class="form-control" id="txtEventLocation"
+                                               placeholder="name of place" name="">
+                                    </div>
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group form-group-default">
+                                        <label>Code</label>
+                                        <input type="text" class="form-control" id="txtEventCode" name="lastName">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="form-group form-group-default">
+                                    <label>Note</label>
+                                    <textarea class="form-control" placeholder="description"
+                                              id="txtEventDesc"></textarea>
+                                </div>
+                            </div>
+                            <div class="row clearfix cursor">
+                                <div class="form-group form-group-default" data-navigate="view"
+                                     data-view-port="#eventFormController" data-view-animation="push-parrallax">
+                                    <label>Alerts</label>
+                                    <div class="p-t-10"><span class="pull-right p-r-10 p-b-5"><i
+                                            class="pg-arrow_right"></i></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-l-30 p-r-30 p-t-30">
+                        <button id="eventSave" class="btn btn-warning btn-cons">Save Event</button>
+                        <button id="eventDelete" class="btn btn-white"><i class="fa fa-trash-o"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="view bg-white">
+                <div class="navbar navbar-default navbar-sm">
+                    <div class="navbar-inner">
+                        <a href="javascript:;" class="inline action p-l-10 link text-master" data-navigate="view"
+                           data-view-port="#eventFormController" data-view-animation="push-parrallax"> <i
+                                class="pg-arrow_left"></i> </a>
+                        <div class="view-heading"><span class="font-montserrat text-uppercase fs-13">Alerts</span></div>
+                        <a href="#" class="inline action p-r-10 pull-right link text-master"> <i class="pg-search"></i>
+                        </a>
+                    </div>
+                </div>
+                <p class="p-l-30 p-r-30 p-t-30"> This is a Demo</p>
+            </div>
+        </div>
+    </div>
+    <div class="quickview-wrapper builder hidden-sm hidden-xs" id="calendar-pending-events">
+        <div class="p-l-30 p-r-30 ">
+            <a class="builder-close quickview-toggle pg-close" data-toggle="quickview"
+               data-toggle-element="#calendar-pending-events"></a>
+            <a class="builder-toggle" data-toggle="quickview" data-toggle-element="#calendar-pending-events"><i
+                    class="pg pg-inbox"></i></a>
+            <ul class="nav nav-tabs nav-tabs-simple nav-tabs-primary m-t-10">
+                <li class="active">
+                    <a data-toggle="tab" href="#tabLayouts" style="color:#2d2d32">Pending Events</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active " id="tabLayouts">
+                    <div class="scroll-wrapper scrollable" style="position: relative;">
+                        <div class="scrollable scroll-content">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-condensed table-detailed" id="detailedTable"
+                                       ui-jq="dataTable" ui-options="options">
+                                    <thead>
+                                    <tr>
+                                        <th style="width:50%">Title</th>
+                                        <th style="width:50%">Status</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr id="event-{{key}}" ng-repeat-start="(key, event) in events"
+                                        ng-click="expand(key, event)">
+                                        <td class="v-align-middle semi-bold">{{event.host}}</td>
+                                        <td class="v-align-middle semi-bold">{{event.status}}</td>
+                                    </tr>
+                                    <tr ng-repeat-end id="event-{{key}}" class="row-details" style="display:none;">
+                                        <td colspan="2">
+                                            <div class="white">
+                                                <div class="media">
+                                                    <div class="media-left">
+                                                        <img class="media-object"
+                                                             ng-src="{{event.cover.filename | image}}"
+                                                             style="width: 64px;">
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h3 class="media-heading">{{event.host}}</h3>
+                                                    </div>
+                                                </div>
+                                                <div class="panel panel-transparent">
+                                                    <div class="panel-heading">
+                                                        <div class="panel-title">{{event.title.english}}</div><br>
+                                                        <div class="panel-title">{{event.title.arabic}}</div>
+                                                    </div>
+                                                    <div class="panel-body">
+                                                        <address class="margin-bottom-20" style="font-size: initial;">
+                                                            <a href="http://maps.google.com/maps?q={{event.location.latitude}},{{event.location.longitude}}"><abbr title="Location">L:</abbr> <span> {{event.location.city}} <button  class="pull-right btn btn-default" type="button"><i class="pg-map"></i> Map</button></a></span>
+                                                            <abbr title="Entrance Fee">Fee:</abbr> <span> {{event.entranceFee}}</span>
+                                                            <br><abbr title="Phone">P:</abbr> <span> {{event.phone}}</span>
+                                                            <br><abbr title="Start Date">Start:</abbr> <span> {{event.startDate | date:'yyyy-MM-dd h:mm a'}}</span>
+                                                            <br><abbr title="End Date">End:</abbr> <span> {{event.endDate | date:'yyyy-MM-dd h:mm a'}}</span>
+                                                            <br>
+
+                                                        </address>
+                                                    </div>
+                                                </div>
+
+                                                <div class="panel">
+                                                    <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                                                        <li class="active"><a href="#english" data-toggle="tab" pg-tab
+                                                                              role="tab">English</a>
+                                                        </li>
+                                                        <li><a href="#arabic" data-toggle="tab" pg-tab
+                                                               role="tab">Arabic</a>
+                                                        </li>
+                                                    </ul>
+                                                    <div class="tab-content">
+                                                        <div class="tab-pane active" id="english">
+                                                            <div class="row column-seperation">
+                                                                <div class="col-md-12">
+                                                                    <div pg-form-group class="form-group required ">
+                                                                        <p>{{event.description.english}}</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="tab-pane " id="arabic">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+
+                                                                    <div pg-form-group class="form-group required ">
+                                                                        <p>{{event.description.arabic}}</p>
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                                <ul class="lg-icon">
+                                                    <li ng-repeat="option in event.options"><span>{{option.name.english}}}}</span>
+                                                    </li>
+                                                </ul>
+
+
+                                                <div class="btn-group">
+                                                    <a ng-repeat="socialMedia in event.socialMedias"
+                                                       href="{{socialMedia.url}}" class="btn btn-default"><i
+                                                            class="fa fa-{{socialMedia.type}}"></i>
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <button ng-repeat="tag in event.tags" class="btn btn-tag btn-tag-light btn-tag-rounded m-r-5 m-l-5" style="font-size: 12px; line-height: 10px;" disabled>{{tag}}</button>
+                                                </div>
+                                                <div>
+                                                    <span ng-repeat="category in event.categories"
+                                                          class="label label-default">{{category.name.english}}</span>
+                                                </div>
+                                                <ul class="slide-list">
+                                                    <li ng-repeat="(key, s) in event.photos"
+                                                        ng-click="showGallery(key)">
+                                                        <img ng-src="{{ s.filename | image }}" width="60"
+                                                             alt="slide number {{ key }}"/>
+                                                    </li>
+                                                </ul>
+                                                <div class="m-t-15 m-b-25">
+                                                    <div class="row">
+                                                        <div class="col-md-6 center-block">
+                                                            <button type="button"
+                                                                    class="btn btn-success btn-cons btn-animated from-left fa fa-check">
+                                                                <span>Accept</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="col-md-6 center-block">
+                                                            <button type="button"
+                                                                    class="btn btn-danger btn-cons btn-animated from-top fa fa-pencil">
+                                                                <span>Edit</span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--        <div class="pull-bottom p-b-15 p-l-15 p-r-15 b-t b-grey p-t-15 m-l-15 m-r-15 bg-white builder-footer">
+               <div class="pull-right">
+                   <form action="http://104.197.142.33/builder_process.php" method="POST" id="exportForm">
+                       <input type="hidden" name="layout" id="layout" value="1">
+                       <input type="hidden" name="colors" id="colors" value="1">
+                       <input type="hidden" name="content" id="content" value="1">
+                       <button id="btnExport" class="btn btn-cons btn-primary">Export</button>
+                   </form>
+               </div>
+               </div>-->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,136 @@
+<!-- START JUMBOTRON -->
+<div class="jumbotron" data-pages="parallax">
+   <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+      <div class="inner">
+         <!-- START BREADCRUMB -->
+         <ul class="breadcrumb">
+            <li> <a href="/">Wain</a> </li>
+            <li><a ui-sref="nav.settings" class="active">Settings</a> </li>
+         </ul>
+
+      </div>
+   </div>
+</div>
+<!-- END JUMBOTRON -->
+<!-- START CONTAINER FLUID -->
+<form name="login" role="form" novalidate>
+   <div class="container-fluid container-fixed-lg">
+      <div class="row">
+         <div class="col-md-8">
+            <!-- START PANEL -->
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <div class="panel-title">New Story </div>
+                  <div class="tools">
+                     <a class="collapse" href="javascript:;"></a>
+                     <a class="config" data-toggle="modal" href="#grid-config"></a>
+                     <a class="reload" href="javascript:;"></a>
+                     <a class="remove" href="javascript:;"></a>
+                  </div>
+               </div>
+               <div class="panel-body">
+                 
+                 
+                  <div class="form-group form-group-default required">
+                     <label>Title</label>
+                     <input type="text" name="title" class="form-control" ng-model="story.title" required>
+                  </div>
+                  <label class="error" for="title" ng-show="error.title" ng-bind="error.title">This field is required.</label>
+                  
+                  
+                  <div class="form-group form-group-default required ">
+                     <label>Cover Image</label>
+                     <div class="dropzone cover-dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="cover" dropzone-config="dropzoneOneFileConfig">
+                        <input name="file" type="file" />
+                     </div>
+                  </div>
+                  <label class="error" for="title" ng-show="error.cover" ng-bind="error.cover">This field is required.</label>
+                  <br>
+                  
+                  <div pg-form-group class="form-group required ">
+                     <div class="summernote-wrapper">
+                        <!--.note-editor .note-editable-->
+                        <div id="summernote" config="summernote_options" on-focus="focus(evt)" on-blur="blur(evt)" ng-model="story.body" summernote>Hello Summernote</div>
+                     </div>
+                  </div>
+                  <label class="error" for="title" ng-show="error.body" ng-bind="error.body">This field is required.</label>
+                  
+               </div>
+            </div>
+            <!-- END PANEL -->
+            <!-- START PANEL -->
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <div class="panel-title"> Photos </div>
+                  <div class="tools">
+                     <a class="collapse" href="javascript:;"></a>
+                     <a class="config" data-toggle="modal" href="#grid-config"></a>
+                     <a class="reload" href="javascript:;"></a>
+                     <a class="remove" href="javascript:;"></a>
+                  </div>
+               </div>
+               <div class="panel-body no-scroll no-padding">
+                  <div class="dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig">
+                     <input name="file" type="file" multiple /> 
+                  </div>
+               </div>
+            </div>
+            <!-- END PANEL -->
+         </div>
+         <div class="col-md-4">
+            <!-- START PANEL -->
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <div class="panel-title">Save & Publish </div>
+                  <div class="tools">
+                     <a class="collapse" href="javascript:;"></a>
+                     <a class="config" data-toggle="modal" href="#grid-config"></a>
+                     <a class="reload" href="javascript:;"></a>
+                     <a class="remove" href="javascript:;"></a>
+                  </div>
+               </div>
+               <div class="panel-body">
+                  <div class="input-group transparent"> <span class="input-group-addon">
+                     <i class="fa fa-globe"></i>
+                     </span>
+                     <select class="cs-select cs-skin-slide" cs-select ng-init="story.language = languages[0]" ng-model="story.language" ng-options="x.name for x in languages"></select>
+                  </div>
+                  <br>
+                  <div class="input-group" style="width: 100%;">
+                     <div pg-form-group class="form-group form-group-default">
+                        <label>Tags</label>
+                        <input class="tagsinput custom-tag-input" type="text" ng-model="tags" ui-jq="tagsinput" /> 
+                     </div>
+                     {{tags}} 
+                  </div>
+                  <br>
+                  <div class="form-group">
+                     <label for="fname" class="col-sm-4 control-label">Editor Pick</label>
+                     <div class="col-sm-8">
+                        <input type="checkbox" class="js-switch" value="APPROVED" ng-model="story.pin" ui-switch="{color: '#10cfbd'}" /> 
+                     </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                     <label for="fname" class="col-sm-4 control-label">Publish</label>
+                     <div class="col-sm-8">
+                        <input type="checkbox" class="js-switch" ng-model="status" ui-switch="{color: '#10cfbd'}" /> 
+                     </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                     <button class="btn btn-primary btn-cons" ng-click="create(true)" ng-disabled="login.$invalid">Save</button>
+                     <button class="btn btn-info btn-cons" ng-click="create()" ng-disabled="login.$invalid">Save and Add Story</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- END PANEL -->
+   </div>
+</form>
+</div>
+</div>
+<!-- END CONTAINER FLUID -->

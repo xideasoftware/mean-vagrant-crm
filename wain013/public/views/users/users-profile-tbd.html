@@ -1,0 +1,195 @@
+<link type="text/css" href="assets/plugins/x-editable/dist/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet">
+<!-- Start content -->
+<div class="content">
+
+    <div class="wraper container">
+
+        <!-- Page-Title -->
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="page-title">Profile</h4>
+                <ol class="breadcrumb">
+                    <li><a href="#">Ubold</a></li>
+                    <li><a href="#">Extras</a></li>
+                    <li class="active">Profile</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-5 col-md-4 col-lg-3">
+                <div class="profile-detail card-box">
+                    <div>
+                        <img src="assets/images/users/avatar-2.jpg" class="img-circle" alt="profile-image">
+
+                        <ul class="list-inline status-list m-t-20">
+                            <li>
+                                <h3 class="text-primary m-b-5">456</h3>
+                                <p class="text-muted">Followings</p>
+                            </li>
+
+                            <li>
+                                <h3 class="text-success m-b-5">5864</h3>
+                                <p class="text-muted">Followers</p>
+                            </li>
+                        </ul>
+
+                        <button type="button" class="btn btn-pink btn-custom btn-rounded waves-effect waves-light">Follow</button>
+
+                        <hr>
+                        <h4 class="text-uppercase font-600">About Me</h4>
+                        <p class="text-muted font-13 m-b-30">
+                            Hi I'm Johnathn Deo,has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.
+                        </p>
+
+                        <div class="text-left">
+                            <p class="text-muted font-13"><strong>Full Name :</strong> <span class="m-l-15">Johnathan Deo</span></p>
+
+                            <p class="text-muted font-13"><strong>Mobile :</strong><span class="m-l-15">(123) 123 1234</span></p>
+
+                            <p class="text-muted font-13"><strong>Email :</strong> <span class="m-l-15">coderthemes@gmail.com</span></p>
+
+                            <p class="text-muted font-13"><strong>Location :</strong> <span class="m-l-15">USA</span></p>
+
+                        </div>
+
+
+                        <div class="button-list m-t-20">
+                            <button type="button" class="btn btn-facebook waves-effect waves-light">
+                                <i class="fa fa-facebook"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-twitter waves-effect waves-light">
+                                <i class="fa fa-twitter"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-linkedin waves-effect waves-light">
+                                <i class="fa fa-linkedin"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-dribbble waves-effect waves-light">
+                                <i class="fa fa-dribbble"></i>
+                            </button>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-lg-9">
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card-box">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <h4 class="m-b-30 m-t-0 header-title"><b>Inline Editor</b></h4>
+                                    <form action="#" class="form-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-5 control-label">Simple Text Field</label>
+                                            <div class="col-sm-7">
+                                                <a href="#" id="inline-username" data-type="text" data-pk="1" data-title="Enter username">superuser</a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5 control-label">Empty text field, required</label>
+                                            <div class="col-sm-7">
+                                                <a href="#" id="inline-firstname" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your firstname"></a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5 control-label">Select, local array, custom display</label>
+                                            <div class="col-sm-7">
+                                                <a href="#" id="inline-sex" data-type="select" data-pk="1" data-value="" data-title="Select sex"></a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5 control-label">Select, error while loading</label>
+                                            <div class="col-sm-7">
+                                                <a href="#" id="inline-status" data-type="select" data-pk="1" data-value="0" data-source="/status" data-title="Select status">Active</a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5 control-label">Combodate</label>
+                                            <div class="col-sm-7">
+                                                <a href="#" id="inline-dob" data-type="combodate" data-value="2015-09-24" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth"></a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5 control-label">Textarea, buttons below. Submit by <i>ctrl+enter</i></label>
+                                            <div class="col-sm-7">
+                                                <a href="#" id="inline-comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments">awesome user!</a>
+                                            </div>
+                                        </div>
+
+                                    </form>
+                                </div>
+
+                                <div class="col-lg-6">
+                                    <h4 class="m-b-30 m-t-0 header-title"><b>Popover Editor</b></h4>
+                                    <form action="#" class="form-horizontal editor-horizontal">
+                                        <div class="form-group">
+                                            <label class="col-sm-5 control-label">Simple Text Field</label>
+                                            <div class="col-sm-7">
+                                                <a href="#" id="username" data-type="text" data-pk="1" data-title="Enter username">superuser</a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5 control-label">Empty text field, required</label>
+                                            <div class="col-sm-7">
+                                                <a href="#" id="firstname" data-type="text" data-pk="1" data-placement="right" data-placeholder="Required" data-title="Enter your firstname"></a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5 control-label">Select, local array, custom display</label>
+                                            <div class="col-sm-7">
+                                                <a href="#" id="sex" data-type="select" data-pk="1" data-value="" data-title="Select sex"></a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5 control-label">Select, error while loading</label>
+                                            <div class="col-sm-7">
+                                                <a href="#" id="status" data-type="select" data-pk="1" data-value="0" data-source="/status" data-title="Select status">Active</a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5 control-label">Combodate</label>
+                                            <div class="col-sm-7">
+                                                <a href="#" id="dob" data-type="combodate" data-value="1984-05-15" data-format="YYYY-MM-DD" data-viewformat="DD/MM/YYYY" data-template="D / MMM / YYYY" data-pk="1" data-title="Select Date of birth"></a>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-5 control-label">Textarea, buttons below. Submit by <i>ctrl+enter</i></label>
+                                            <div class="col-sm-7">
+                                                <a href="#" id="comments" data-type="textarea" data-pk="1" data-placeholder="Your comments here..." data-title="Enter comments">awesome user!</a>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end row -->
+
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+</div>
+<!-- container -->
+
+</div>
+<!-- content -->
+
+<!-- XEditable Plugin -->
+<script src="assets/plugins/moment/moment.js"></script>
+<script type="text/javascript" src="assets/plugins/x-editable/dist/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+<script type="text/javascript" src="assets/pages/jquery.xeditable.js"></script>

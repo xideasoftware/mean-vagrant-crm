@@ -1,0 +1,350 @@
+<!-- START JUMBOTRON -->
+<div class="jumbotron" data-pages="parallax">
+   <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+      <div class="inner">
+         <!-- START BREADCRUMB -->
+         <ul class="breadcrumb">
+            <li> <a href="/">Wain</a> </li>
+            <li> <a ui-sref="nav.eventsList">Businesses</a> </li>
+            <li><a ui-sref="nav.eventsNew" class="active">New Business</a> </li>
+         </ul>
+      </div>
+   </div>
+</div>
+<!-- END JUMBOTRON -->
+<!-- START CONTAINER FLUID -->
+<form name="login" role="form" novalidate>
+   <div class="container-fluid container-fixed-lg">
+      <div class="row">
+         <div class="col-md-8">
+            <!-- START PANEL -->
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <div class="panel-title">New Business </div>
+                  <div class="tools">
+                     <a class="collapse" href="javascript:;"></a>
+                     <a class="config" data-toggle="modal" href="#grid-config"></a>
+                     <a class="reload" href="javascript:;"></a>
+                     <a class="remove" href="javascript:;"></a>
+                  </div>
+               </div>
+               <div class="panel-body">
+                  <div class="panel">
+                     <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                        <li class="active"><a href="#tab2hellowWorld" data-toggle="tab" pg-tab role="tab">English</a>
+                        </li>
+                        <li><a href="#tab2FollowUs" data-toggle="tab" pg-tab role="tab">Arabic</a>
+                        </li>
+                     </ul>
+                     <div class="tab-content">
+                        <div class="tab-pane active" id="tab2hellowWorld">
+                           <div class="row column-seperation">
+                              <div class="col-md-12">
+                                 <div class="form-group form-group-default required">
+                                    <label>Name (EN)</label>
+                                    <input type="text" name="englishTitle" class="form-control" ng-model="event.title.englishTitle" required>
+                                 </div>
+                                 <label class="error" for="englishTitle" ng-show="error.title.englishTitle" ng-bind="error.title.englishTitle">This field is required.</label>
+                                 <div pg-form-group class="form-group required ">
+                                    <div class="summernote-wrapper">
+                                       <!--.note-editor .note-editable-->
+                                       <div id="summernote" config="summernote_options" on-focus="focus(evt)" on-blur="blur(evt)" ng-model="event.description.englishDescription" summernote>Hello Summernote</div>
+                                    </div>
+                                 </div>
+                                 <label class="error" for="title" ng-show="error.description.englishDescription" ng-bind="error.description.englishDescription">This field is required.</label>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="tab-pane " id="tab2FollowUs">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group form-group-default required">
+                                    <label>Name (AR)</label>
+                                    <input type="text" name="arabicTitle" class="form-control" ng-model="event.title.arabicTitle" required>
+                                 </div>
+                                 <label class="error" for="arabicTitle" ng-show="error.title.arabicTitle" ng-bind="error.title.arabicTitle">This field is required.</label>
+                                 <div pg-form-group class="form-group required ">
+                                    <div class="summernote-wrapper">
+                                       <!--.note-editor .note-editable-->
+                                       <div id="summernote" config="summernote_options" on-focus="focus(evt)" on-blur="blur(evt)" ng-model="event.description.arabicDescription" summernote>Hello Summernote</div>
+                                    </div>
+                                 </div>
+                                 <label class="error" for="title" ng-show="error.description.arabicDescription" ng-bind="event.description.arabicDescription">This field is required.</label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+
+                  </div>
+                  <div class="panel">
+                     <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                        <li class="active"><a href="#tab2hellowWorld" data-toggle="tab" pg-tab role="tab">Branch</a>
+                        </li>
+                        <li><a href="#tab2FollowUs" data-toggle="tab" pg-tab role="tab">New Branch</a>
+                        </li>
+                     </ul>
+                     <div class="tab-content">
+                        <div class="tab-pane active" id="tab2hellowWorld">
+                           <div class="row column-seperation">
+                           <div class="col-md-6">
+                              <div class="form-group form-group-default required">
+                                 <label>phoneNumber (EN)</label>
+                                 <input type="text" name="englishTitle" class="form-control" ng-model="event.title.englishTitle" required>
+                              </div>
+
+                           </div>
+                           <div class="col-md-6">
+                              <div class="form-group form-group-default required">
+                                 <label>email (EN)</label>
+                                 <input type="text" name="englishTitle" class="form-control" ng-model="event.title.englishTitle" required>
+                              </div>
+
+                           </div>
+                        </div>
+                           <div class="row column-seperation">
+                              <div class="col-md-6">
+                                 <div class="form-group form-group-default required">
+                                    <label>openingHours (EN)</label>
+                                    <input type="text" name="englishTitle" class="form-control" ng-model="event.title.englishTitle" required>
+                                 </div>
+
+                              </div>
+                              <div class="col-md-6">
+                                 <div class="form-group form-group-default required">
+                                    <label>openingHours (AR)</label>
+                                    <input type="text" name="englishTitle" class="form-control" ng-model="event.title.englishTitle" required>
+                                 </div>
+
+                              </div>
+                           </div>
+                           <div class="row column-seperation">
+                              <div class="col-md-4">
+                                 <div class="form-group form-group-default required">
+                                    <label>email (EN)</label>
+                                    <input type="text" name="englishTitle" class="form-control" ng-model="event.title.englishTitle" required>
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="form-group form-group-default required">
+                                    <label>openingHours (EN)</label>
+                                    <input type="text" name="englishTitle" class="form-control" ng-model="event.title.englishTitle" required>
+                                 </div>
+                              </div>
+                              <div class="col-md-4">
+                                 <div class="form-group form-group-default required">
+                                    <label>address (EN)</label>
+                                    <input type="text" name="englishTitle" class="form-control" ng-model="event.title.englishTitle" required>
+                                 </div>
+                              </div>
+                           </div>
+
+
+
+                        </div>
+                        <div class="tab-pane " id="tab2FollowUs">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="form-group form-group-default required">
+                                    <label>Name (AR)</label>
+                                    <input type="text" name="arabicTitle" class="form-control" ng-model="event.title.arabicTitle" required>
+                                 </div>
+                                 <label class="error" for="arabicTitle" ng-show="error.title.arabicTitle" ng-bind="error.title.arabicTitle">This field is required.</label>
+                                 <div pg-form-group class="form-group required ">
+                                    <div class="summernote-wrapper">
+                                       <!--.note-editor .note-editable-->
+                                       <div id="summernote" config="summernote_options" on-focus="focus(evt)" on-blur="blur(evt)" ng-model="event.description.arabicDescription" summernote>Hello Summernote</div>
+                                    </div>
+                                 </div>
+                                 <label class="error" for="title" ng-show="error.description.arabicDescription" ng-bind="event.description.arabicDescription">This field is required.</label>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="form-group form-group-default required ">
+                           <label>Logo</label>
+                           <div class="dropzone cover-dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="logo" dropzone-config="dropzoneOneFileConfig">
+                              <input name="file" type="file" />
+                           </div>
+                        </div>
+                        <label class="error" for="title" ng-show="error.logo" ng-bind="error.logo">This field is required.</label>
+                        <br>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="form-group form-group-default required ">
+                           <label>Cover Image</label>
+                           <div class="dropzone cover-dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="cover" dropzone-config="dropzoneOneFileConfig">
+                              <input name="file" type="file" />
+                           </div>
+                        </div>
+                        <label class="error" for="title" ng-show="error.cover" ng-bind="error.cover">This field is required.</label>
+                        <br>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- END PANEL -->
+            <!-- START PANEL -->
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <div class="panel-title"> Photos </div>
+                  <div class="tools">
+                     <a class="collapse" href="javascript:;"></a>
+                     <a class="config" data-toggle="modal" href="#grid-config"></a>
+                     <a class="reload" href="javascript:;"></a>
+                     <a class="remove" href="javascript:;"></a>
+                  </div>
+               </div>
+               <div class="panel-body no-scroll no-padding">
+                  <div class="dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneConfig">
+                     <input name="file" type="file" multiple />
+                  </div>
+               </div>
+            </div>
+            <!-- END PANEL -->
+         </div>
+         <div class="col-md-4">
+            <!-- START PANEL -->
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <div class="panel-title">Save & Publish </div>
+                  <div class="tools">
+                     <a class="collapse" href="javascript:;"></a>
+                     <a class="config" data-toggle="modal" href="#grid-config"></a>
+                     <a class="reload" href="javascript:;"></a>
+                     <a class="remove" href="javascript:;"></a>
+                  </div>
+               </div>
+               <div class="panel-body">
+                  <div class="input-group" style="width: 100%;">
+                     <div pg-form-group class="form-group form-group-default">
+                        <label>Tags</label>
+                        <input class="tagsinput custom-tag-input" type="text" ng-model="tags" ui-jq="tagsinput" />
+                     </div>
+                     {{tags}}
+                  </div>
+               </div>
+               <div class="panel-heading">
+                  <div class="panel-title">Social Media </div>
+               </div>
+               <div class="panel-body">
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="input-group transparent">
+                           <span class="input-group-addon">
+                           <i class="fa fa-instagram"></i>
+                           </span>
+                           <input type="text" placeholder="Username" class="form-control">
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="input-group transparent">
+                           <span class="input-group-addon">
+                           <i class="fa fa-twitter"></i>
+                           </span>
+                           <input type="text" placeholder="Username" class="form-control">
+                        </div>
+                     </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="input-group transparent">
+                           <span class="input-group-addon">
+                           <i class="fa fa-facebook"></i>
+                           </span>
+                           <input type="text" placeholder="Username" class="form-control">
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="input-group transparent">
+                           <span class="input-group-addon">
+                           <i class="fa fa-snapchat-ghost"></i>
+                           </span>
+                           <input type="text" placeholder="Username" class="form-control">
+                        </div>
+                     </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <div class="input-group transparent">
+                           <span class="input-group-addon">
+                           <i class="fa fa-google-plus"></i>
+                           </span>
+                           <input type="text" placeholder="Username" class="form-control">
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="input-group transparent">
+                           <span class="input-group-addon">
+                           <i class="fa fa-globe"></i>
+                           </span>
+                           <input type="text" placeholder="Username" class="form-control">
+                        </div>
+                     </div>
+                  </div>
+                  <br>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <h5>Event
+                           <span class="semi-bold">Options</span>
+                        </h5>
+                        <div class="checkbox check-primary" ng-repeat="(key, item) in eventOptions">
+                           <input type="checkbox" name="eventOption" value="{{item}}" id="checkbox{{key}}">
+                           <label for="checkbox{{key}}">{{item.option.english}}</label>
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <h5>Event
+                           <span class="semi-bold">Categories</span>
+                        </h5>
+                        <div class="checkbox check-primary" ng-repeat="(key, item) in eventCategories">
+                           <input type="checkbox" name="eventCategory" value="{{item}}" id="checkbox{{key}}">
+                           <label for="checkbox{{key}}">{{item.name.english}}</label>
+                        </div>
+                     </div>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                     <label for="fname" class="col-sm-4 control-label">Sponsored</label>
+                     <div class="col-sm-8">
+                        <input type="checkbox" class="js-switch" value="APPROVED" ng-model="story.pin" ui-switch="{color: '#10cfbd'}" />
+                     </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                     <label for="fname" class="col-sm-4 control-label">Editor Pick</label>
+                     <div class="col-sm-8">
+                        <input type="checkbox" class="js-switch" value="APPROVED" ng-model="story.pin" ui-switch="{color: '#10cfbd'}" />
+                     </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                     <label for="fname" class="col-sm-4 control-label">Publish</label>
+                     <div class="col-sm-8">
+                        <input type="checkbox" class="js-switch" ng-model="status" ui-switch="{color: '#10cfbd'}" />
+                     </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group">
+                     <button class="btn btn-primary btn-cons" ng-click="create(true)" ng-disabled="login.$invalid">Save</button>
+                     <button class="btn btn-info btn-cons" ng-click="create()" ng-disabled="login.$invalid">Save and Add Business</button>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <!-- END PANEL -->
+   </div>
+</form>
+</div>
+</div>
+<!-- END CONTAINER FLUID -->

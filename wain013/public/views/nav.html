@@ -1,0 +1,35 @@
+<!-- BEGIN SIDEBAR -->
+<div ng-include src=" 'views/blocks/sidebar.html' " include-replace>
+</div>
+<!-- END SIDEBAR -->
+<!-- START PAGE-CONTAINER -->
+<div class="page-container" ng-class="{'bg-white':is('app.calendar')}">
+    <!-- START PAGE HEADER WRAPPER -->
+    <div ng-hide="is('app.calendar')" ng-include=" 'views/blocks/header.html' ">
+    </div>
+    <!-- END PAGE HEADER WRAPPER -->
+    <div ng-if="is('app.calendar')" ng-include=" 'views/events/mobile_controls.html' ">
+    </div>
+    <!-- START PAGE CONTENT WRAPPER -->
+    <div class="page-content-wrapper" ng-class="{'full-height': includes('app.messages') || includes('app.calendar') }">
+        <!-- START PAGE CONTENT -->
+        <div class="content" ng-class="{
+        'overlay-footer top-left bottom-right': is('app.maps.google') || is('app.maps.vector'), 
+        'full-height' : includes('app.messages')
+    }">
+            <div class="full-height full-width" ui-view>
+            </div>
+        </div>
+        <!-- END PAGE CONTENT -->
+        <div ng-if="!(includes('app.messages') || includes('app.calendar') || includes('app.social') || includes('app.layouts') )" ng-include=" 'views/blocks/footer.html'">
+        </div>
+    </div>
+
+</div>
+<!-- END PAGE CONTAINER -->
+
+<style>
+    #sidebar-menu ul ul.active {
+        display: block;
+    }
+</style>

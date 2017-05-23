@@ -1,0 +1,446 @@
+<style>
+    .table.table-hover tbody tr:hover td {
+        background: #f9f9f9 !important;
+    }
+</style>
+<div ng-controller="UsersListCtrl">
+    <!-- START JUMBOTRON -->
+    <div class="jumbotron" data-pages="parallax">
+        <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+            <div class="inner">
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                    <li><a href="">Users</a></li>
+                    <li><a href="" class="active">All</a></li>
+                </ul>
+                <!-- END BREADCRUMB -->
+                <div class="row"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END JUMBOTRON -->
+    <!-- END CONTAINER FLUID -->
+    <!-- START CONTAINER FLUID -->
+    <div class="container-fluid container-fixed-lg">
+        <!-- START PANEL -->
+
+        <div class="panel panel-transparent">
+            <div class="panel-heading">
+                <div class="panel-title">Users</div>
+                <div class="pull-right">
+                    <div class="row">
+                        <div class="col-md-4 col-xs-12"><input type="text" id="search" class="form-control"
+                                                               placeholder="Search..." ng-model="search"></div>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="btn-group" opt-kind="" ok-key="filter">
+                                <button type="button" class="btn btn-default active" ng-click="status = {}">All</button>
+                                <button type="button" class="btn btn-default" ng-click="status = {status:'ACTIVE'}">
+                                    Active
+                                </button>
+                                <button type="button" class="btn btn-default" ng-click="status = {status:'PENDING'}">
+                                    Pending
+                                </button>
+                                <button type="button" class="btn btn-default" ng-click="status = {status:'BLOCKED'}">
+                                    Blocked
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-xs-12">
+                            <button id="show-modal" class="btn btn-primary btn-cons" ng-click="showModal()"><i
+                                    class="fa fa-plus"></i> New User
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="basicTable">
+                        <thead>
+                        <tr>
+                            <!-- NOTE * : Inline Style Width For Table Cell is Required as it may differ from user to user
+                                    Comman Practice Followed
+                                    -->
+                            <th style="width:1%"></th>
+                            <th style="width:20%">Username</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Language</th>
+                            <th>Type</th>
+                            <th style="width:50px">Status</th>
+                            <th style="width:150px">OP</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="(key, item) in eventsOptions | filter:search | filter:status"
+                            class="{{item.status}}">
+                            <td class="v-align-middle">
+                                <div style="background: url({{ item.avatar.filename | image }}) center;background-size: cover;border-radius: 50%;height: 60px;width: 60px;"></div>
+                            </td>
+                            <td class="v-align-middle ">
+                                <p>{{item.username}}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <p>{{item.firstName}} {{item.lastName}}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <p>{{item.email}}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <p>{{item.language.name}}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <p>{{item.userType}}</p>
+                            </td>
+                            <td class="v-align-middle">
+                                <button style="background:{{item.status | color}};min-height: 35px;"
+                                        class="btn"></button>
+                            </td>
+                            <td class="v-align-middle">
+                                <button ng-click="editModal(item, key)" class="btn"><i class="fa fa-pencil"></i>
+                                </button>
+                                <div class="dropdown pull-right">
+                                    <button class="profile-dropdown-toggle btn btn-default" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="pg-menu_justify"></i>
+                                    </button>
+                                    <ul class="dropdown-menu profile-dropdown" role="menu">
+                                        <li><a ng-click="delete(item)" class="btn"><i class="pg-trash"></i> Delete</a>
+                                        </li>
+                                        <li><a ng-click="reset(item)" class="btn"><i class="pg-settings_small"></i> Reset</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END PANEL -->
+    </div>
+    <!-- END CONTAINER FLUID -->
+    <div class="modal fade stick-up ng-scope" id="addNewAppModal" tabindex="-1" role="dialog"
+         aria-labelledby="addNewAppModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header clearfix ">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
+                            class="pg-close fs-14"></i></button>
+                    <h4 class="p-b-5"><span class="semi-bold">New</span> User</h4></div>
+                <div class="modal-body">
+                    <form role="form" class="ng-pristine ng-valid" name="addItem" ui-keypress="{13:'add()'}" novalidate>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group="" class="form-group form-group-default required"
+                                     ng-class="{ 'not-available has-error' : usernameAvailablity }">
+                                    <label>Username</label>
+                                    <input id="NewUsername" type="text" ng-model="new.username"
+                                           ng-change="checkUsername()" ng-model-options="{debounce: 500}"
+                                           class="form-control" placeholder="Username"></div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>First Name</label>
+                                    <input id="firstname" type="text" ng-model="new.firstName" class="form-control"
+                                           placeholder="First Name"></div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>Last Name</label>
+                                    <input id="lastname" type="text" ng-model="new.lastName" class="form-control"
+                                           placeholder="Last Name"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group="" class="form-group form-group-default"
+                                     ng-class="{ 'not-available has-error' : emailAvailablity }">
+                                    <label>Email</label>
+                                    <input id="email" type="email" ng-model="new.email" ng-change="checkEmail()"
+                                           ng-model-options="{debounce: 500}" class="form-control"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>Password</label>
+                                    <input id="password" type="password" ng-model="new.password" class="form-control"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group class="form-group form-group-default input-group col-sm-12">
+                                    <label>Birth Date</label>
+                                    <input type="text" class="form-control" placeholder="Pick a date"
+                                           ng-model="new.birthDate" id="datepicker-component2" ui-jq="datepicker">
+                                    <span class="input-group-addon">
+                                                  <i class="fa fa-calendar"></i>
+                                                </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div pg-form-group
+                                     class="form-group form-group-default form-group-default-select required">
+                                    <label>User Type</label>
+                                    <ui-select ng-model="new.userType" theme="bootstrap">
+                                        <ui-select-match class="ui-select-match" placeholder="User Type">{{
+                                            $select.selected }}
+                                        </ui-select-match>
+                                        <ui-select-choices class="ui-select-choices"
+                                                           repeat="item in userTypes | filter:$select.search"
+                                                           value="{{$select.selected}}">
+                                            {{item}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div pg-form-group
+                                     class="form-group form-group-default form-group-default-select required">
+                                    <label>Subscription</label>
+                                    <ui-select ng-model="new.subscription" theme="bootstrap">
+                                        <ui-select-match class="ui-select-match" placeholder="Subscription">{{
+                                            $select.selected }}
+                                        </ui-select-match>
+                                        <ui-select-choices class="ui-select-choices"
+                                                           repeat="item in subscriptions | filter:$select.search"
+                                                           value="{{$select.selected}}">
+                                            {{item}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div pg-form-group
+                                     class="form-group form-group-default form-group-default-select required">
+                                    <label>Status</label>
+                                    <ui-select ng-model="new.status" theme="bootstrap">
+                                        <ui-select-match class="ui-select-match" placeholder="Status">{{
+                                            $select.selected }}
+                                        </ui-select-match>
+                                        <ui-select-choices class="ui-select-choices"
+                                                           repeat="item in statusList | filter:$select.search"
+                                                           value="{{$select.selected}}">
+                                            {{item}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div pg-form-group
+                                     class="form-group form-group-default form-group-default-select required">
+                                    <label>Language</label>
+                                    <ui-select ng-model="new.language" theme="bootstrap">
+                                        <ui-select-match class="ui-select-match" placeholder="Language">{{
+                                            $select.selected.name }}
+                                        </ui-select-match>
+                                        <ui-select-choices class="ui-select-choices"
+                                                           repeat="item in languages | filter:$select.search"
+                                                           value="{{$select.selected.value}}">
+                                            {{item.name}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group form-group-default ndropzone">
+                                    <label>Avatar</label>
+                                    <div class="dropzone cover-dropzone" method="post" enctype="multipart/form-data"
+                                         ng-dropzone dropzone="avatar" dropzone-config="dropzoneOneFileConfig">
+                                        <input name="file" type="file"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="add-app" type="button" class="btn btn-primary  btn-cons" ng-click="add()">Add</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-cons">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- END CONTAINER FLUID -->
+    <div class="modal fade stick-up ng-scope" id="EditModel" tabindex="-1" role="dialog" ng-submit="save()"
+         aria-labelledby="EditModel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header clearfix ">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i
+                            class="pg-close fs-14"></i></button>
+                    <h4 class="p-b-5"><span class="semi-bold">Edit</span> User</h4></div>
+                <div class="modal-body">
+                    <form role="form" class="ng-pristine ng-valid" ui-keypress="{13:'save()'}" ng-submit="save()">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group="" class="form-group form-group-default required"
+                                     ng-class="{ 'not-available has-error' : usernameAvailablity }">
+                                    <label>Username</label>
+                                    <input id="NewUsername" type="text" ng-model="item.username"
+                                           ng-change="checkUsername()" ng-model-options="{debounce: 500}"
+                                           class="form-control" placeholder="Username"></div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>First Name</label>
+                                    <input id="firstname" type="text" ng-model="item.firstName" class="form-control"
+                                           placeholder="First Name"></div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>Last Name</label>
+                                    <input id="lastname" type="text" ng-model="item.lastName" class="form-control"
+                                           placeholder="Last Name"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group="" class="form-group form-group-default"
+                                     ng-class="{ 'not-available has-error' : emailAvailablity }">
+                                    <label>Email</label>
+                                    <input id="email" type="email" ng-model="item.email" ng-change="checkEmail()"
+                                           ng-model-options="{debounce: 500}" class="form-control"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group class="form-group form-group-default input-group col-sm-12">
+                                    <label>Birth Date</label>
+                                    <input type="email" class="form-control" placeholder="Pick a date"
+                                           ng-model="item.birthDate" id="datepicker-component2" ui-jq="datepicker">
+                                    <span class="input-group-addon">
+                                                  <i class="fa fa-calendar"></i>
+                                                </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div pg-form-group
+                                     class="form-group form-group-default form-group-default-select required">
+                                    <label>User Type</label>
+                                    <ui-select ng-model="item.userType" theme="bootstrap">
+                                        <ui-select-match class="ui-select-match" placeholder="User Type">{{
+                                            $select.selected }}
+                                        </ui-select-match>
+                                        <ui-select-choices class="ui-select-choices"
+                                                           repeat="item in userTypes | filter:$select.search"
+                                                           value="{{$select.selected}}">
+                                            {{item}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div pg-form-group
+                                     class="form-group form-group-default form-group-default-select required">
+                                    <label>Subscription</label>
+                                    <ui-select ng-model="new.subscription" theme="bootstrap">
+                                        <ui-select-match class="ui-select-match" placeholder="Subscription">{{
+                                            $select.selected }}
+                                        </ui-select-match>
+                                        <ui-select-choices class="ui-select-choices"
+                                                           repeat="item in subscriptions | filter:$select.search"
+                                                           value="{{$select.selected}}">
+                                            {{item}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div pg-form-group
+                                     class="form-group form-group-default form-group-default-select required">
+                                    <label>Status</label>
+                                    <ui-select ng-model="item.status" theme="bootstrap">
+                                        <ui-select-match class="ui-select-match" placeholder="User Status">{{
+                                            $select.selected }}
+                                        </ui-select-match>
+                                        <ui-select-choices class="ui-select-choices"
+                                                           repeat="item in statusList | filter:$select.search"
+                                                           value="{{$select.selected}}">
+                                            {{item}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div pg-form-group
+                                     class="form-group form-group-default form-group-default-select required">
+                                    <label>Language</label>
+                                    <ui-select ng-model="item.language" theme="bootstrap">
+                                        <ui-select-match class="ui-select-match" placeholder="User Language">{{
+                                            $select.selected.name }}
+                                        </ui-select-match>
+                                        <ui-select-choices class="ui-select-choices"
+                                                           repeat="item in languages | filter:$select.search"
+                                                           value="{{$select.selected.value}}">
+                                            {{item.name}}
+                                        </ui-select-choices>
+                                    </ui-select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>Original Avatar</label>
+                                    <img style="width:100%;" ng-model="item.icon.filename"
+                                         ng-src="{{ item.avatar.filename | image }}"/>
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                                <div class="form-group form-group-default required ">
+                                    <label>Cover Avatar</label>
+                                    <div class="dropzone cover-dropzone" method="post" enctype="multipart/form-data"
+                                         ng-dropzone dropzone="newAvatar" dropzone-config="dropzoneOneFileConfig"
+                                         event-handlers="{ 'success': dzSuccess }">
+                                        <input name="file" type="file"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="add-app" type="button" class="btn btn-primary btn-cons" ng-click="save()">Save</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-cons" ng-click="revert()">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>

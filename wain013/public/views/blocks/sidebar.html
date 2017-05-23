@@ -1,0 +1,233 @@
+    <!-- BEGIN SIDEBPANEL-->
+    <nav class="page-sidebar" data-pages="sidebar" pg-sidebar>
+      <!-- BEGIN SIDEBAR MENU TOP TRAY CONTENT-->
+      <div class="sidebar-overlay-slide from-top" id="appMenu">
+        <div class="row">
+          <div class="col-xs-6 no-padding">
+            <a href="" class="p-l-40"><img src="assets/img/demo/social_app.svg" alt="socail">
+            </a>
+          </div>
+          <div class="col-xs-6 no-padding">
+            <a href="" class="p-l-10"><img src="assets/img/demo/email_app.svg" alt="socail">
+            </a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-6 m-t-20 no-padding">
+            <a href="" class="p-l-40"><img src="assets/img/demo/calendar_app.svg" alt="socail">
+            </a>
+          </div>
+          <div class="col-xs-6 m-t-20 no-padding">
+            <a href="" class="p-l-10"><img src="assets/img/demo/add_more.svg" alt="socail">
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- END SIDEBAR MENU TOP TRAY CONTENT-->
+      <!-- BEGIN SIDEBAR MENU HEADER-->
+      <div class="sidebar-header">
+        <img src="assets/img/logo_white.png" alt="logo" class="brand" data-src="assets/img/logo_white.png" ui-jq="unveil" data-src-retina="assets/img/logo_white_2x.png" width="78" height="22">
+        <div class="sidebar-header-controls">
+          <button type="button" class="btn btn-xs sidebar-slide-toggle btn-link m-l-20" data-pages-toggle="#appMenu"><i class="fa fa-angle-down fs-16"></i>
+          </button>
+          <button type="button" class="btn btn-link visible-lg-inline" data-toggle-pin="sidebar"><i class="fa fs-12"></i>
+          </button>
+        </div>
+      </div>
+      <!-- END SIDEBAR MENU HEADER-->
+      <!-- START SIDEBAR MENU -->
+      <div class="sidebar-menu">
+        <!-- BEGIN SIDEBAR MENU ITEMS-->
+        <ul class="menu-items">
+          <li class="m-t-30 open" ui-sref-active="active">
+            <a ui-sref="nav.dashboard" class="detailed">
+              <span class="title">Dashboard</span>
+            </a>
+            <span class="icon-thumbnail" ng-class="{'bg-success': isActive('/dashboard')}"><i class="pg-home"></i></span>
+          </li>
+          <li ng-class="{'active open': isActive(['/articles/published', '/stories/pending', '/stories/new'])}">
+            <a href="javascript:;">
+              <span class="title">Stories</span>
+              <span class="arrow" ng-class="{'active open': isActive(['/stories/published', '/stories/pending', '/stories/new'])}"></span>
+            </a>
+            <span class="icon-thumbnail" ng-class="{'bg-success': isActive(['/stories/published', '/stories/pending', '/stories/new'])}"><i class="pg-form"></i></span>
+            <ul class="sub-menu">
+              <li ui-sref-active="active">
+                <a ui-sref="nav.storyAll">All [CMS 17]</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/stories/all')}">PS</span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.storyPublished">Published  [CMS 18]</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/stories/published')}">PS</span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.storyPending">Pending [CMS 19]</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/stories/pending')}">PS</span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.storyNew">New Story</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/stories/new')}">NS</span>
+              </li>
+            </ul>
+          </li>
+          <li ng-class="{'active open': isActive(['/events/published', '/events/calendar', '/events/new', '/events/all', '/events/pending', '/events/options'])}">
+            <a href="javascript:;">
+              <span class="title">Events</span>
+              <span class="arrow" ng-class="{'active open': isActive(['/events/published', '/events/calendar', '/events/all', '/events/new', '/events/pending', '/events/options'])}"></span>
+            </a>
+            <span class="icon-thumbnail" ng-class="{'bg-success': isActive(['/events/published', '/events/calendar', '/events/all', '/events/new', '/events/pending', '/events/options'])}"><i class="pg-calender"></i></span>
+            <ul class="sub-menu">
+              <li ui-sref-active="active">
+                <a ui-sref="app.calendar">Calendar [CMS-20]</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/events/calendar')}"><i class="pg-calender"></i></span>
+              </li>
+                <li ui-sref-active="active">
+                    <a ui-sref="nav.eventsAll">All [CMS-22]</a>
+                    <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/events/all')}"><i class="pg-menu_justify"></i></span>
+                </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.eventPublished">Published [CMS-24]</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/events/published')}"><i class="pg-menu_justify"></i></span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.eventsPending">Pending [CMS-23]</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/events/pending')}"><i class="pg-menu_justify"></i></span>
+              </li>
+
+              <li ui-sref-active="active">
+                <a ui-sref="nav.eventsNew">New Events [CMS-21]</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/events/new')}"><i class="pg-plus"></i></span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.eventsOptions">Events Options</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/events/options')}"><i class="fa fa-tags"></i></span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.eventsCategories">Events Categories</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/events/categories')}"><i class="fa fa-tags"></i></span>
+              </li>
+            </ul>
+
+          </li>
+
+        <li ng-class="{'active open': isActive(['/businesses/new', '/businesses/published', '/businesses/pending', '/businesses/all', '/businesses/options', '/businesses/categories'])}">
+            <a href="javascript:;">
+              <span class="title">Businesses</span>
+              <span class="arrow" ng-class="{'active open': isActive(['/businesses/new', '/businesses/published', '/businesses/all', '/businesses/pending', '/businesses/options', '/businesses/categories'])}"></span>
+            </a>
+            <span class="icon-thumbnail" ng-class="{'bg-success': isActive(['/businesses/new', '/businesses/published', '/businesses/all', '/businesses/pending', '/businesses/options', '/businesses/categories'])}"><i class="fa fa-building"></i></span>
+            <ul class="sub-menu">
+              <li ui-sref-active="active">
+                <a ui-sref="nav.businessesNew">New [CMS-25]</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/businesses/new')}">NE</span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.businessesPublished">Published [CMS-28]</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/businesses/published')}">C</span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.businessesAll">All [CMS-26]</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/businesses/all')}">C</span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.businessesPending">Pending [CMS-27]</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/businesses/all')}">C</span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.businessesOptions">Businesses Options</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/businesses/options')}">EO</span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.businessesCategories">Businesses Categories</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/businesses/categories')}">PS</span>
+              </li>
+            </ul>
+
+          </li>  
+            
+            
+        <li ng-class="{'active open': isActive(['/users/all', '/users/business', '/users/admin'])}">
+            <a href="javascript:;">
+              <span class="title">Users</span>
+              <span class="arrow" ng-class="{'active open': isActive(['/users/all', '/users/business', '/users/admin'])}"></span>
+            </a>
+            <span class="icon-thumbnail" ng-class="{'bg-success': isActive(['/users/all', '/users/business', '/users/admin'])}"><i class="fa fa-users"></i></span>
+            <ul class="sub-menu">
+              <li ui-sref-active="active">
+                <a ui-sref="nav.users">All Users</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/users/all')}">U</span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.usersBusiness">Business Users</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/users/business')}">B</span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.usersAdmin">Admin Users</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/users/admin')}">A</span>
+              </li>
+            </ul>
+
+          </li>
+            
+          <li ng-class="{'active': isActive('/app/messages/inbox/')}">
+            <a ui-sref="app.messages.inbox" ng-class="{'active': isActive('/app/messages/inbox/')}" class="detailed">
+              <span class="title">Messages [missing]</span>
+              <span class="details">234 New Emails</span>
+            </a>
+            <span class="icon-thumbnail" ng-class="{'bg-success': isActive('/app/messages/inbox/')}"><i class="pg-mail"></i></span>
+          </li>
+            
+          <li ng-class="{'active open': isActive(['/contents/published', '/contents/pending', '/contents/new'])}">
+            <a href="javascript:;">
+              <span class="title">Content</span>
+              <span class="arrow" ng-class="{'active open': isActive(['/contents/published', '/contents/pending', '/contents/new'])}"></span>
+            </a>
+            <span class="icon-thumbnail" ng-class="{'bg-success': isActive(['/contents/published', '/contents/pending', '/contents/new'])}"><i class="pg-form"></i></span>
+            <ul class="sub-menu">
+              <li ui-sref-active="active">
+                <a ui-sref="nav.contentPublished">Published Contents</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/contents/published')}">PS</span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.contentPending">Pending Contents</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/contents/pending')}">PS</span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.contentNew">New Content</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/contents/new')}">NS</span>
+              </li>
+            </ul>
+          </li>
+            
+          <li ng-class="{'active open': isActive(['/settings/variables', '/settings/tags','/settings/email/templates'])}">
+            <a href="javascript:;">
+              <span class="title">Settings</span>
+              <span class="arrow" ng-class="{'active open': isActive(['/settings/variables', '/settings/tags','/settings/email/templates'])}"></span>
+            </a>
+            <span class="icon-thumbnail" ng-class="{'bg-success': isActive(['/settings/variables', '/settings/tags','/settings/email/templates'])}"><i class="pg-settings_small"></i></span>
+            <ul class="sub-menu">
+              <li ui-sref-active="active">
+                <a ui-sref="nav.variables"><span class="title">System Variables</span></a>
+                <span class="icon-thumbnail" ng-class="{'bg-success': isActive('/settings/variables')}"><i class="pg-settings_small"></i></span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.emailTemplates"><span class="title">Email Templates</span></a>
+                <span class="icon-thumbnail" ng-class="{'bg-success': isActive('/settings/email/templates')}"><i class="pg-settings_small"></i></span>
+              </li>
+              <li ui-sref-active="active">
+                <a ui-sref="nav.tags">Tags</a>
+                <span class="icon-thumbnail" ng-class="{'bg-complete': isActive('/settings/tags')}"><i class="fa fa-tags"></i></span>
+              </li>
+            </ul>
+          </li>
+
+
+
+
+        </ul>
+        <div class="clearfix"></div>
+      </div>
+      <!-- END SIDEBAR MENU -->
+    </nav>
+    <!-- END SIDEBAR -->
+    <!-- END SIDEBPANEL-->

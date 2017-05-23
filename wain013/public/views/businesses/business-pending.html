@@ -1,0 +1,123 @@
+<style>
+    .table.table-hover tbody tr:hover td {
+        background: #f9f9f9 !important;
+    }
+</style>
+<div ng-controller="BusinessPendingListCtrl" ng-init="status = 'PENDING'">
+    <!-- START JUMBOTRON -->
+    <div class="jumbotron" data-pages="parallax">
+        <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+            <div class="inner">
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                    <li> <a href="">Businesses</a> </li>
+                    <li><a href="" class="active">Pending Businesses</a> </li>
+                </ul>
+                <!-- END BREADCRUMB -->
+                <div class="row"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- END JUMBOTRON -->
+    <!-- END CONTAINER FLUID -->
+    <!-- START CONTAINER FLUID -->
+    <div class="container-fluid container-fixed-lg">
+        <!-- START PANEL -->
+        <div class="panel panel-transparent">
+            <div class="panel-heading">
+                <div class="panel-title">Pending Businesses</div>
+                <div class="pull-right">
+                    <div class="row">
+                        <div class="col-md-4 col-xs-12"><input type="text" id="search" class="form-control"
+                                                               placeholder="Search..." ng-model="search"></div>
+                        <div class="col-md-2 col-xs-12">
+                            <button id="show-modal" class="btn btn-primary btn-cons" ng-click="redirect()"><i class="fa fa-plus"></i> Add Businesses</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="basicTable">
+                        <thead>
+                            <tr>
+                                <!-- NOTE * : Inline Style Width For Table Cell is Required as it may differ from user to user 
+                                        Comman Practice Followed
+                                        -->
+                                <th>Image</th>
+                                <th>Name</th>
+                                <th>Owner</th>
+                                <th>isSponsered</th>
+                                <th>Editor Pick</th>
+                                <th>Categories</th>
+                                <th>Tags</th>
+                                <th>Status</th>
+                                <th style="width:200px">OP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key, item) in list | filter:search | filter:status">
+                                <td class="v-align-middle">
+                                    <div style="background: url('{{ item.cover.filename | image }}') center;background-size: cover;border-radius: 50%;height: 60px;width: 60px;"></div>
+                                </td>
+                                <td class="v-align-middle ">
+                                    <p>{{item.title.english}}</p>
+                                </td>
+                                <td class="v-align-middle ">
+                                    <p>{{item.owner.username}}</p>
+                                </td>
+                                <td class="v-align-middle ">
+                                    <p>{{item.isSponsored}}</p>
+                                </td>
+                                <td class="v-align-middle ">
+                                    <p>{{item.editorPick}}</p>
+                                </td>
+                                <td class="v-align-middle ">
+                                    <p>{{item.categories}}</p>
+                                </td>
+                                <td class="v-align-middle ">
+                                    <p>{{item.tags}}</p>
+                                </td>
+                                <td class="v-align-middle">
+                                    <button style="background:{{item.status | color}};min-height: 35px;" class="btn"></button>
+                                </td>
+                                <td class="v-align-middle">
+                                    <button ng-click="editModal(item, key)" class="btn"><i class="fa fa-pencil"></i></button>
+                                    <button class="btn" ng-click="alert(item)"><i class="pg-trash"></i></button>
+                                    <button class="btn" ng-click="publish(item)"><i class="pg-folder_alt"></i></button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END PANEL -->
+    </div>
+    <!-- END CONTAINER FLUID -->
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content-wrapper">
+                <div class="modal-content">
+                    <div class="modal-header clearfix text-left">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i>
+                        </button>
+                        <h5>Delete Warning</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p class="no-margin">This will delete the item permanently.<br> Are you sure delete this item?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btn-cons  pull-left inline" ng-click="delete()">Yes</button>
+                        <button type="button" class="btn btn-default btn-cons no-margin pull-left inline" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+    </div>
+</div>

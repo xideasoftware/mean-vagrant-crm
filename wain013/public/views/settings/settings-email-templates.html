@@ -1,0 +1,445 @@
+<style>
+    .table.table-hover tbody tr:hover td {
+        background: #f9f9f9 !important;
+    }
+</style>
+<div ng-controller="EmailTemplatesCtrl">
+    <!-- START JUMBOTRON -->
+    <div class="jumbotron" data-pages="parallax">
+        <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+            <div class="inner">
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                    <li><a href="">Settings</a></li>
+                    <li><a href="" class="active">Email Templates</a></li>
+                </ul>
+                <!-- END BREADCRUMB -->
+                <div class="row"></div>
+            </div>
+        </div>
+    </div>
+    <!-- END JUMBOTRON -->
+    <!-- END CONTAINER FLUID -->
+    <!-- START CONTAINER FLUID -->
+    <div class="container-fluid container-fixed-lg">
+        <!-- START PANEL -->
+        <div class="panel panel-transparent">
+            <div class="panel-heading">
+                <div class="panel-title">Email Templates</div>
+                <div class="pull-right">
+                    <div class="col-xs-12">
+                        <button id="show-modal" class="btn btn-primary btn-cons" ng-click="showModal()"><i
+                                class=" pg-save"></i> Save
+                        </button>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel-heading">
+                        <div class="panel-title">New Users</div>
+                    </div>
+                    <div class="panel">
+                        <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                            <li class="active"><a href="#english" data-toggle="tab" pg-tab role="tab">English</a>
+                            </li>
+                            <li><a href="#arabic" data-toggle="tab" pg-tab role="tab">Arabic</a>
+                            </li><button class="btn pull-right btn-default btn-xs m-t-10 m-r-10">Reset</button>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="english">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.newUser.english"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane " id="arabic">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.newUser.arabic"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="panel-heading">
+                        <div class="panel-title">Upgrade to Business Account</div>
+                    </div>
+                    <div class="panel">
+                        <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                            <li class="active"><a href="#english" data-toggle="tab" pg-tab role="tab">English</a>
+                            </li>
+                            <li><a href="#arabic" data-toggle="tab" pg-tab role="tab">Arabic</a>
+                            </li></li><button class="btn pull-right btn-default btn-xs m-t-10 m-r-10">Reset</button>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="english">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.businessAccount.english"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane " id="arabic">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.businessAccount.arabic"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel-heading">
+                        <div class="panel-title">Reset Password</div>
+                    </div>
+                    <div class="panel">
+                        <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                            <li class="active"><a href="#english" data-toggle="tab" pg-tab role="tab">English</a>
+                            </li>
+                            <li><a href="#arabic" data-toggle="tab" pg-tab role="tab">Arabic</a>
+                            </li></li><button class="btn pull-right btn-default btn-xs m-t-10 m-r-10">Reset</button>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="english">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.resetPassword.english"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane " id="arabic">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.resetPassword.arabic"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="panel-heading">
+                        <div class="panel-title">Forget password</div>
+                    </div>
+                    <div class="panel">
+                        <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                            <li class="active"><a href="#english" data-toggle="tab" pg-tab role="tab">English</a>
+                            </li>
+                            <li><a href="#arabic" data-toggle="tab" pg-tab role="tab">Arabic</a>
+                            </li></li><button class="btn pull-right btn-default btn-xs m-t-10 m-r-10">Reset</button>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="english">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.forgetPassword.english"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane " id="arabic">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.forgetPassword.arabic"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel-heading">
+                        <div class="panel-title">Add Content (Business, Event, Story)</div>
+                    </div>
+                    <div class="panel">
+                        <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                            <li class="active"><a href="#english" data-toggle="tab" pg-tab role="tab">English</a>
+                            </li>
+                            <li><a href="#arabic" data-toggle="tab" pg-tab role="tab">Arabic</a>
+                            </li></li><button class="btn pull-right btn-default btn-xs m-t-10 m-r-10">Reset</button>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="english">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.addContent.english"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane " id="arabic">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.addContent.arabic"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="panel-heading">
+                        <div class="panel-title">Approve Content (Business, Event, Story)</div>
+                    </div>
+                    <div class="panel">
+                        <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                            <li class="active"><a href="#english" data-toggle="tab" pg-tab role="tab">English</a>
+                            </li>
+                            <li><a href="#arabic" data-toggle="tab" pg-tab role="tab">Arabic</a>
+                            </li></li><button class="btn pull-right btn-default btn-xs m-t-10 m-r-10">Reset</button>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="english">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.approveContent.english"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane " id="arabic">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.approveContent.arabic"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel-heading">
+                        <div class="panel-title">Modify Content (Business, Event, Story)</div>
+                    </div>
+                    <div class="panel">
+                        <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                            <li class="active"><a href="#english" data-toggle="tab" pg-tab role="tab">English</a>
+                            </li>
+                            <li><a href="#arabic" data-toggle="tab" pg-tab role="tab">Arabic</a>
+                            </li></li><button class="btn pull-right btn-default btn-xs m-t-10 m-r-10">Reset</button>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="english">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.modifyContent.english"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane " id="arabic">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.modifyContent.arabic"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="panel-heading">
+                        <div class="panel-title">Delete Content (Business, Event, Story)</div>
+                    </div>
+                    <div class="panel">
+                        <ul class="nav nav-tabs nav-tabs-simple" role="tablist">
+                            <li class="active"><a href="#english" data-toggle="tab" pg-tab role="tab">English</a>
+                            </li>
+                            <li><a href="#arabic" data-toggle="tab" pg-tab role="tab">Arabic</a>
+                            </li></li><button class="btn pull-right btn-default btn-xs m-t-10 m-r-10">Reset</button>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="english">
+                                <div class="row column-seperation">
+                                    <div class="col-md-12">
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.deleteContent.english"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane " id="arabic">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        
+                                        <div pg-form-group class="form-group required ">
+                                            <div class="summernote-wrapper">
+                                                <!--.note-editor .note-editable-->
+                                                <div id="summernote" config="summernote_options" on-focus="focus(evt)"
+                                                     on-blur="blur(evt)" ng-model="template.deleteContent.arabic"
+                                                     summernote>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- END PANEL -->
+    </div>
+
+
+</div>

@@ -1,0 +1,66 @@
+<!-- START JUMBOTRON -->
+<div class="jumbotron" data-pages="parallax">
+   <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+      <div class="inner">
+         <!-- START BREADCRUMB -->
+         <ul class="breadcrumb">
+            <li> <a href="/">Wain</a> </li>
+            <li> <a>CMS</a> </li>
+         </ul>
+
+      </div>
+   </div>
+</div>
+<!-- END JUMBOTRON -->
+<!-- START CONTAINER FLUID -->
+<form name="login" role="form" novalidate ng-controller="CMSCtrl">
+   <div class="container-fluid container-fixed-lg">
+      <div class="row">
+         <div class="col-md-12">
+            <!-- START PANEL -->
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <div class="panel-title"> One Photo </div>
+                  <div class="tools">
+                     <a class="collapse" href="javascript:;"></a>
+                     <a class="config" data-toggle="modal" href="#grid-config"></a>
+                     <a class="reload" href="javascript:;"></a>
+                     <a class="remove" href="javascript:;"></a>
+                  </div>
+               </div>
+               <div class="panel-body no-scroll no-padding">
+                  <div class="dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="dropzone" dropzone-config="dropzoneOneFileConfig" event-handlers="{ 'success': dzSuccess }">
+                     <input name="file" type="file" multiple /> 
+                  </div>
+               </div>
+            </div>
+             <div>{{result | json}}</div>
+         </div>
+      </div>
+       <div class="row">
+         <div class="col-md-12">
+            <!-- START PANEL -->
+            <div class="panel panel-default">
+               <div class="panel-heading">
+                  <div class="panel-title"> Multi Photos </div>
+                  <div class="tools">
+                     <a class="collapse" href="javascript:;"></a>
+                     <a class="config" data-toggle="modal" href="#grid-config"></a>
+                     <a class="reload" href="javascript:;"></a>
+                     <a class="remove" href="javascript:;"></a>
+                  </div>
+               </div>
+               <div class="panel-body no-scroll no-padding">
+                  <div class="dropzone cover-dropzone ng-isolate-scope" style="min-height: 360px;" method="post" enctype="multipart/form-data" ng-dropzone dropzone="cover" dropzone-config="dropzoneConfig">
+                     <input name="file" type="file" multiple /> 
+                  </div>
+               </div>
+            </div>
+             <div>{{resultmultiple | json}}</div>
+             <button id="show-modal" class="btn btn-primary btn-cons" ng-click="showPhotos()"> show</button>
+         </div>
+      </div>
+   </div>
+</form>
+
+<!-- END CONTAINER FLUID -->

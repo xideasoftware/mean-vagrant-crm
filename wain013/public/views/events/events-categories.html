@@ -1,0 +1,205 @@
+<style>
+    .table.table-hover tbody tr:hover td {
+        background: #f9f9f9 !important;
+    }
+</style>
+<div ng-controller="EventsCategoriesCtrl">
+    <!-- START JUMBOTRON -->
+    <div class="jumbotron" data-pages="parallax">
+        <div class="container-fluid container-fixed-lg sm-p-l-20 sm-p-r-20">
+            <div class="inner">
+                <!-- START BREADCRUMB -->
+                <ul class="breadcrumb">
+                    <li> <a href="">Events</a> </li>
+                    <li><a href="" class="active">Categories</a> </li>
+                </ul>
+                <!-- END BREADCRUMB -->
+                <div class="row"> </div>
+            </div>
+        </div>
+    </div>
+    <!-- END JUMBOTRON -->
+    <!-- END CONTAINER FLUID -->
+    <!-- START CONTAINER FLUID -->
+    <div class="container-fluid container-fixed-lg">
+        <!-- START PANEL -->
+        <div class="panel panel-transparent">
+            <div class="panel-heading">
+                <div class="panel-title">Events Categories</div>
+                <div class="pull-right">
+                    <div class="col-xs-12">
+                        <button id="show-modal" class="btn btn-primary btn-cons" ng-click="showModal()"><i class="fa fa-plus"></i> Add Category</button>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="basicTable">
+                        <thead>
+                            <tr>
+                                <!-- NOTE * : Inline Style Width For Table Cell is Required as it may differ from user to user 
+                                        Comman Practice Followed
+                                        -->
+                                <th style="width:1%"></th>
+                                <th style="width:1%"></th>
+                                <th style="width:20%">English</th>
+                                <th>Arabic</th>
+                                <th>Parent</th>
+                                <th style="width:150px">OP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="(key, item) in eventsOptions">
+                                <td class="v-align-middle">
+                                    <div style="background: url({{ item.icon.filename | image }}) center;background-size: cover;border-radius: 50%;height: 60px;width: 60px;"></div>
+                                </td>
+                                <td class="v-align-middle">
+                                    <button style="background:{{item.color}};min-height: 35px;" ng-click="delete(item)" class="btn"></button>
+                                </td>
+                                <td class="v-align-middle ">
+                                    <p>{{item.name.english}}</p>
+                                </td>
+                                <td class="v-align-middle">
+                                    <p>{{item.name.arabic}}</p>
+                                </td>
+                                <td class="v-align-middle">
+                                    <p>{{item.parent.name.english}}</p>
+                                </td>
+                                <td class="v-align-middle">
+                                    <button ng-click="editModal(item, key)" class="btn"><i class="fa fa-pencil"></i></button>
+                                    <button ng-click="delete(item)" class="btn"><i class="pg-trash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END PANEL -->
+    </div>
+    <!-- END CONTAINER FLUID -->
+    <div class="modal fade stick-up ng-scope" id="addNewAppModal" tabindex="-1" role="dialog" aria-labelledby="addNewAppModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header clearfix ">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i> </button>
+                    <h4 class="p-b-5"><span class="semi-bold">New</span> Category</h4> </div>
+                <div class="modal-body">
+                    <form role="form" class="ng-pristine ng-valid" name="addItem" ui-keypress="{13:'add()'}">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>English</label>
+                                    <input id="addEnglishName" type="text" ng-model="addEnglishCategory" class="form-control" placeholder="Category name in English"> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>Arabic</label>
+                                    <input id="addArabicOption" type="text" ng-model="addArabicCategory" class="form-control" placeholder="Category name in Arabic"> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+
+         
+                                <ui-select ng-model="addItem.selected" theme="bootstrap" id="eventsOptions">
+                                    <ui-select-match class="ui-select-match" placeholder="Parent">{{ $select.selected.name.english }}
+                                    </ui-select-match>
+                                    <ui-select-choices class="ui-select-choices" repeat="item in eventsOptions | filter:$select.search" value="{{$select.selected.value}}">
+                                        {{item.name.english}}
+                                    </ui-select-choices>
+                                </ui-select>
+                                
+                                <br>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>Color</label>
+                                    <input id="addColor" type="color" ng-model="addColor" value="#ff00ff" class="form-control"> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                               <div class="form-group form-group-default required ">
+                                 <label>Cover Image</label>
+                                 <div class="dropzone cover-dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="icon" dropzone-config="dropzoneOneFileConfig">
+                                    <input name="file" type="file" />
+                                 </div>
+                              </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="add-app" type="button" class="btn btn-primary  btn-cons" ng-click="add()">Add</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-cons">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+        <!-- END CONTAINER FLUID -->
+    <div class="modal fade stick-up ng-scope" id="EditModel" tabindex="-1" role="dialog" ng-submit="save()" aria-labelledby="EditModel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header clearfix ">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="pg-close fs-14"></i> </button>
+                    <h4 class="p-b-5"><span class="semi-bold">Edit</span> Category</h4> </div>
+                <div class="modal-body">
+                    <form role="form" class="ng-pristine ng-valid" ui-keypress="{13:'save()'}" ng-submit="save()">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>English</label>
+                                    <input id="editEnglishOption" type="text" ng-model="item.name.english" class="form-control" placeholder="Option in English"> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>Arabic</label>
+                                    <input id="editArabicOption" type="text" ng-model="item.name.arabic" class="form-control" placeholder="Option in Arabic"> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>Color</label>
+                                    <input id="addColor" type="color" ng-model="item.color" value="#ff00ff" class="form-control"> </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div pg-form-group="" class="form-group form-group-default">
+                                    <label>Original Image</label>
+                                    <img style="width:100%;"  ng-model="item.icon.filename" ng-src="{{ item.icon.filename | image }}" />
+                                </div>
+                            </div>
+                            <div class="col-sm-8">
+                               <div class="form-group form-group-default required ">
+                                 <label>Cover Image</label>
+                                 <div class="dropzone cover-dropzone" method="post" enctype="multipart/form-data" ng-dropzone dropzone="newIcon" dropzone-config="dropzoneOneFileConfig" event-handlers="{ 'success': dzSuccess }">
+                                    <input name="file" type="file" />
+                                 </div>
+                              </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="add-app" type="button" class="btn btn-primary btn-cons" ng-click="save()">Save</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-cons" ng-click="revert()">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+</div>
